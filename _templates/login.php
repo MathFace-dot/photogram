@@ -12,9 +12,16 @@ if (isset($_POST['email_address']) and isset($_POST['password'])) {
 }
 if (!$login) {
     if ($result) {
+		 $should_redirect = Session::get('_redirect');
+        $redirect_to = get_config('base_path');
+        if (isset($should_redirect)) {
+            $redirect_to = $should_redirect;
+		Session::set('_redirect', false);
+		}
+
         ?>
 <script>
-	window.location.href = "<?=get_config('base_path')?>"
+	window.location.href = "<?=$redirect_to?>"
 </script>
 
 <?php

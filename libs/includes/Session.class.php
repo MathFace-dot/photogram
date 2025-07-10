@@ -79,6 +79,13 @@ class Session
         }
         return false;
     }
+    public static function ensureLogin(){      //to access the page if the person login 
+        if(!Session::isAuthenticated()){
+        Session::set('_redirect', $_SERVER['REQUEST_URI']);
+        header("Location: /login.php");
+        die();
+        }
+    }
 
 
 }
