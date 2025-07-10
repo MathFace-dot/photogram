@@ -24,6 +24,17 @@ class WebAPI
     public function initiateSession()
     {
         Session::start();
+        if(Session::isset("session_token")){
+        try{
+            //Session::$usersession = UserSession::authorize(Session::get('session_token'));
+            $session = UserSession::authorize(Session::get('session_token'));
+            Session::set('user_session',$session);
+
+        }catch(Exception $e){
+
+        }
+
+        }
         
         // $__base_path = get_config('base_path');
     }

@@ -1,7 +1,9 @@
 <?php
 
 class Session
-{   public static $isError = false; 
+{   public static $isError = false;
+    public static $user = null;
+    public static $usersession = null; 
     public static function start()
     {
         session_start();
@@ -42,6 +44,14 @@ class Session
             return $default;
         }
     }
+    public static function getUser(){
+        return Session::$user;
+    }
+    public static function getUserSession()
+    {
+        return Session::get('user_session');
+    }
+
     public static function loadTemplate($name){
         $script = $_SERVER['DOCUMENT_ROOT'] . get_config('base_path'). "_templates/$name.php";
       if (is_file($script)) {
@@ -61,6 +71,12 @@ class Session
     }
      public static function isAuthenticated()
     {
+        //return false;
+        //return Session::getUserSession()->isValid();
+
+        if(is_object(Session::getUserSession())){
+            return Session::getUserSession()->isValid();
+        }
         return false;
     }
 

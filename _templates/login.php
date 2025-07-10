@@ -1,8 +1,8 @@
 <?php
 
 $login = true;
-Session::set('mode', 'web');
-Session::set('test', 'websdkjfnsdkjfn');
+//Session::set('mode', 'web');
+//Session::set('test', 'websdkjfnsdkjfn');
 if (isset($_POST['email_address']) and isset($_POST['password'])) {
     $email_address = $_POST['email_address'];
     $password = $_POST['password'];

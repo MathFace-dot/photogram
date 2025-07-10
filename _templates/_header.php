@@ -15,7 +15,12 @@
 					<ul class="list-unstyled">
 						<li><a href="#" class="text-white">Follow on Twitter</a></li>
 						<li><a href="#" class="text-white">Like on Facebook</a></li>
-						<li><a href="#" class="text-white">Email me</a></li>
+						<?php if(Session::isAuthenticated()){?>
+							<li><a href="/?logout" class="text-white">logout</a></li>							
+						<?php }else { ?>
+							<li><a href="/login.php" class="text-white">login</a></li>
+							<?php }?>
+						
 					</ul>
 				</div>
 			</div>
