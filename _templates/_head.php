@@ -7,7 +7,7 @@
     <title>Login to Photogram</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php get_config('base_path')?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=get_config('base_path')?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
     // Initialize the agent at application startup.

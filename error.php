@@ -2,8 +2,6 @@
 
 include 'libs/load.php';
 
-
-// Session::renderPage();
+Session::$isError = true;
 Session::renderPage();
-
 ?>
