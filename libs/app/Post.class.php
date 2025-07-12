@@ -1,12 +1,12 @@
 <?php
 
-include_once __DIR__ . "/../traits/SQLGetterSetter.trait.php";
+//include_once __DIR__ . "/../traits/SQLGetterSetter.trait.php";
 class Post {
     //use SQLGetterSetter;
     public function __construct($id){
      $this->id = $id;
-    // $this->conn = Database::getConnection();
-    //  $this->table = 'posts';
+    $this->conn = Database::getConnection();
+     $this->table = 'posts';
     }
 
     public static function registerPost($text, $image_tmp) {

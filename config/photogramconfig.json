@@ -4,7 +4,6 @@
 	"db_password": "Password@1234",
 	"db_name": "sibidharan1_photogram",
 	"base_path": "/",
-	"upload_path": "/photogram_uploads"
-
-
+	"upload_path": "/var/www/photogram/photogram_uploads/",
+	"upload_path_1": "/home/ubuntu/Desktop/Develop/photo_upload/"
 }
