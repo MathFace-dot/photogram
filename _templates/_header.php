@@ -14,7 +14,7 @@
 					<h4 class="text-white">Contact</h4>
 					<ul class="list-unstyled">
 						<li><a href="#" class="text-white">Follow on Twitter</a></li>
-						<li><a href="#" class="text-white">Like on Facebook</a></li>
+						<li><a href="/about.php" class="text-white">about</a></li>
 						<?php if(Session::isAuthenticated()){?>
 							<li><a href="/?logout" class="text-white">logout</a></li>							
 						<?php }else { ?>

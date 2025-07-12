@@ -1,12 +1,12 @@
 <pre>
 <?php
-#include 'libs/load.php';
+include 'libs/load.php';
 
 // $cookie_name = "testscript";
 // $cookie_value = $_SERVER['REQUEST_URI'];
 // setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
-print("_SERVER \n");
-print_r($_SERVER);
+// print("_SERVER \n");
+// print_r($_SERVER);
 // print("_GET \n");
 // print_r($_GET);
 // print("_POST \n");
@@ -45,9 +45,11 @@ print_r($_SERVER);
 // print("\nThis is mono font inside pre tag \n");
 
 
-session_id('fbcesuoj0ea7dvcqdii7t9am4k');
-session_start();
+// session_id('fbcesuoj0ea7dvcqdii7t9am4k');
+// session_start();
 
-print($_SESSION['web']);
+// print($_SESSION['web']);
+$p = new Post(1);
+print($p->getOwner())
 ?>
 </pre>

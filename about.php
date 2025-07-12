@@ -2,10 +2,15 @@
 
 include 'libs/load.php';
 
-if(Session::isAuthenticated()){
+// if(Session::isAuthenticated()){
 
-Session::renderPage();
-}else{
+// Session::renderPage();
+// }else{
+//     Session::ensureLogin();
+// }
+
     Session::ensureLogin();
-}
+    Session::renderPage();
+
+
 ?>
