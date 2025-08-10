@@ -1,81 +1,64 @@
 <?php
 
-//include_once __DIR__ . "/../traits/SQLGetterSetter.trait.php";
-class Post {
-    //use SQLGetterSetter;
-    public function __construct($id){
-     $this->id = $id;
-    $this->conn = Database::getConnection();
-     $this->table = 'posts';
-    }
+class Post
+{
+    //use SQLGetterSetter; //including a trait
 
-    public static function registerPost($text, $image_tmp) {
-        if(isset($_FILES['post_image'])) {
-            $author = Session::getUser()->getEmail();
-            $image_name = md5($author.time()) . ".jpg"; #TODO: change the id gen algo
+    public $id;
+    public $conn;
+    public $table;
+
+    public static function registerPost($text, $image_tmp)
+    {
+        if (is_file($image_tmp) and exif_imagetype($image_tmp) !== false) {
+            //$author = Session::getUser()->getEmail();
+            $author = Session::getUser()->getId();
+
+            //print("Author: $author\n");
+            $image_name = md5($author.time()) . image_type_to_extension(exif_imagetype($image_tmp));
             $image_path = get_config('upload_path') . $image_name;
-            if(move_uploaded_file($image_tmp, $image_path)){
-                
-                $insert_command = "INSERT INTO `posts` (`post_text`, `image_uri`, `like_count`, `uploaded_time`, `owner`)
-                VALUES ('$text', 'https://c8.alamy.com/comp/RJR7N5/random-objects-on-black-background-vector-illustration-RJR7N5.jpg', '0', now(), '$author')";
+            if (move_uploaded_file($image_tmp, $image_path)) {
+                $image_uri = "/images/$image_name";
+                $insert_command = "INSERT INTO `posts` (`post_text`, `multiple_images`, `image_uri`, `like_count`, `owner`) VALUES ('$text', '0', '$image_uri', '0','$author')";
                 $db = Database::getConnection();
-                if($db->query($insert_command)){
-                    $id = mysqli_insert_id($db);
-                    return new Post($id);
+                if ($db->query($insert_command)) {
+                    // $id = mysqli_insert_id($db);
+                    // return new Post($id);
+                    print("Post created successfully with image: $image_uri\n");
+                    return true;
                 } else {
+                    print("Error creating post: " . $db->error);
+                    throw new Exception("Error creating post: " . $db->error);
                     return false;
                 }
             }
-            
         } else {
             throw new Exception("Image not uploaded");
         }
-        
     }
 
-    public function __call($name, $arguments)
+    public static function getAllPosts()
     {
-        $property = preg_replace("/[^0-9a-zA-Z]/", "", substr($name, 3));
-        $property = strtolower(preg_replace('/\B([A-Z])/', '_$1', $property));
-        if (substr($name, 0, 3) == "get") {
-            return $this->_get_data($property);
-        } elseif (substr($name, 0, 3) == "set") {
-            return $this->_set_data($property, $arguments[0]);
-        } else {
-            throw new Exception("Post::__call() -> $name, function unavailable.");
-        }
+        $db = Database::getConnection();
+        $sql = "SELECT * FROM `posts` ORDER BY `uploaded_time` DESC";
+        $result = $db->query($sql);
+        return iterator_to_array($result);
     }
-    private function _get_data($var)
+
+    public static function countAllPosts()
     {
-        if (!$this->conn) {
-            $this->conn = Database::getConnection();
-        }
-        $sql = "SELECT `$var` FROM `posts` WHERE `id` = $this->id";
-        //print($sql);
-        $result = $this->conn->query($sql);
-        if ($result and $result->num_rows == 1) {
-            //print("Res: ".$result->fetch_assoc()["$var"]);
-            return $result->fetch_assoc()["$var"];
-        } else {
-            return null;
-        }
+        $db = Database::getConnection();
+        $sql = "SELECT COUNT(*) as count FROM `posts` ORDER BY `uploaded_time` DESC";
+        $result = $db->query($sql);
+        return iterator_to_array($result);
     }
 
-    //This function helps to  set the data in the database
-    private function _set_data($var, $data)
+    public function __construct($id)
     {
-        if (!$this->conn) {
-            $this->conn = Database::getConnection();
-        }
-        $sql = "UPDATE `posts` SET `$var`='$data' WHERE `id`=$this->id;";
-        if ($this->conn->query($sql)) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->id = $id;
+        $this->conn = Database::getConnection();
+        $this->table = 'posts';
     }
 
-
- 
 }
 ?>
