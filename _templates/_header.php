@@ -14,11 +14,11 @@
 					<h4 class="text-white">Contact</h4>
 					<ul class="list-unstyled">
 						<li><a href="#" class="text-white">Follow on Twitter</a></li>
-						<li><a href="/about.php" class="text-white">about</a></li>
+						<li><a href="/about.php" class="text-white">About</a></li>
 						<?php if(Session::isAuthenticated()){?>
-							<li><a href="/?logout" class="text-white">logout</a></li>							
+							<li><a href="/?logout" class="text-white">Logout</a></li>
 						<?php }else { ?>
-							<li><a href="/login.php" class="text-white">login</a></li>
+							<li><a href="/login.php" class="text-white">Login</a></li>
 							<?php }?>
 						
 					</ul>
