@@ -22,10 +22,10 @@ class Post
                 $insert_command = "INSERT INTO `posts` (`post_text`, `multiple_images`, `image_uri`, `like_count`, `owner`) VALUES ('$text', '0', '$image_uri', '0','$author')";
                 $db = Database::getConnection();
                 if ($db->query($insert_command)) {
-                    // $id = mysqli_insert_id($db);
-                    // return new Post($id);
+                    $id = mysqli_insert_id($db);
+                    return new Post($id);
                     print("Post created successfully with image: $image_uri\n");
-                    return true;
+                    //return true;
                 } else {
                     print("Error creating post: " . $db->error);
                     throw new Exception("Error creating post: " . $db->error);
@@ -41,8 +41,9 @@ class Post
     {
         $db = Database::getConnection();
         $sql = "SELECT * FROM `posts` ORDER BY `uploaded_time` DESC";
+        //print("SQL: $sql\n");
         $result = $db->query($sql);
-        return iterator_to_array($result);
+         return iterator_to_array($result);
     }
 
     public static function countAllPosts()
@@ -51,6 +52,7 @@ class Post
         $sql = "SELECT COUNT(*) as count FROM `posts` ORDER BY `uploaded_time` DESC";
         $result = $db->query($sql);
         return iterator_to_array($result);
+        
     }
 
     public function __construct($id)
@@ -58,6 +60,17 @@ class Post
         $this->id = $id;
         $this->conn = Database::getConnection();
         $this->table = 'posts';
+    }
+    public function uploadTime()
+    {
+        $sql = "SELECT `uploaded_time` FROM `posts` WHERE `id` = $this->id";
+        $result = $this->conn->query($sql);
+        if ($result) {
+            $row = $result->fetch_assoc();
+            return $row['uploaded_time'];
+        } else {
+            throw new Exception("Error fetching upload time: " . $this->conn->error);
+        }
     }
 
 }
