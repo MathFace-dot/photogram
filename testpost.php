@@ -5,6 +5,7 @@ include 'libs/load.php';
 $p = new Post(14);
 print($p->uploadTime());
 print_r($p->getAllPosts());
+http://www.photogram.project.com/test_carbon.php
 
 // This file is used to test the Post class functionality
 // It includes the Post class and creates an instance of it

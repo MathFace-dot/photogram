@@ -1,8 +1,12 @@
 <?php
+    
+include_once __DIR__ . "/../traits/SQLGetterSetter.trait.php";
+
+use Carbon\Carbon;
 
 class Post
 {
-    //use SQLGetterSetter; //including a trait
+    use SQLGetterSetter; //including a trait
 
     public $id;
     public $conn;
