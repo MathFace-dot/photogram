@@ -2,9 +2,10 @@
 <?php
 include 'libs/load.php';
 
-$p = new Post(14);
-print($p->uploadTime());
-print_r($p->getAllPosts());
+$p = new Post(15);
+//print($p->uploadTime());
+//print_r($p->getAllPosts());
+print($p->getUploadedTime());
 http://www.photogram.project.com/test_carbon.php
 
 // This file is used to test the Post class functionality

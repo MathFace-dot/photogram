@@ -6,6 +6,7 @@ include_once 'includes/Database.class.php';
 include_once 'includes/UserSession.class.php';
 include_once 'includes/WebAPI.class.php';
 include_once 'app/Post.class.php';
+require 'vendor/autoload.php';
 
 global $__site_config;
 /*

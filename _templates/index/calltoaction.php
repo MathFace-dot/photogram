@@ -1,13 +1,11 @@
 
 <?php
 
-if (isset($_POST['post_text']) and isset($_FILES['post_image'])) {
+if (isset($_POST['post_text']) && isset($_FILES['post_image'])) {
     $image_tmp = $_FILES['post_image']['tmp_name'];
     $text = $_POST['post_text'];
     Post::registerPost($text, $image_tmp);
-}
-
-?>
+}?>
 
 <!-- <section class="py-5 text-center container">
     <div class="row py-lg-5">
@@ -66,7 +64,3 @@ if (isset($_POST['post_text']) and isset($_FILES['post_image'])) {
     </form>
   </div>
 </section>
-
-
-
-
