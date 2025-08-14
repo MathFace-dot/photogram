@@ -99,7 +99,8 @@ class UserSession
             } else {
                 return false;
             }
-        } else throw new Exception("login tiem is null");
+        } else throw new Exception("login time is null");
+        
     }
 
     public function getIP()

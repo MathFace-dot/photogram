@@ -25,11 +25,11 @@
 								<button type="button" class="btn btn-sm btn-outline-primary">Like</button>
 								<button type="button" class="btn btn-sm btn-outline-success">Share</button>
 								<?php
-			    //                             $user = Session::getUser();
-			    // if (Session::isOwnerOf($p->getOwner())) {
-			        ?>
+			                    //             $user = Session::getUser();
+			    				// if (Session::isOwnerOf($p->getOwner())) {
+			        			?>
 								<button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
-								<?//}?>
+								<?php //}?>
 							</div>
 							<small
 								class="text-muted"><?=$uploaded_time_str?></small>

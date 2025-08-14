@@ -25,6 +25,8 @@ foreach ($posts as $post) {
     $uploaded_time = Carbon::parse($p->getUploadedTime());
     $uploaded_time_str = $uploaded_time->diffForHumans();
 
+    print($p->getOwner());
+
     print_r($uploaded_time_str);
 }
     
