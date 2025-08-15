@@ -5,6 +5,8 @@ RewriteEngine On
 RewriteBase /
 
 RewriteRule ^/?images/([^/]+)?$ images.php?name=$1 [L,QSA,NC]
+RewriteRule ^/?file/([^/]+)?$ file.php?name=$1 [L,QSA,NC]
+RewriteRule ^/?file1/([^/]+)?$ file1.php?name=$1 [L,QSA,NC]
 
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^([^/.]+)$ $1.php [L]
