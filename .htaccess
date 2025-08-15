@@ -1,3 +1,7 @@
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|webp|gif|html|htm|xml|txt|xsl|css)$">
+    Header set Cache-Control "max-age=60*60*24*365"
+</FilesMatch>
+
 ErrorDocument 404 /error.php
 ErrorDocument 500 "<H1>Some error, contact administrator</H1>"
 
