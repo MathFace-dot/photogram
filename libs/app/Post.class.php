@@ -15,8 +15,8 @@ class Post
     public static function registerPost($text, $image_tmp)
     {
         if (is_file($image_tmp) and exif_imagetype($image_tmp) !== false) {
-            //$author = Session::getUser()->getEmail();
-            $author = Session::getUser()->getId();
+            $author = Session::getUser()->getEmail();
+           // $author = Session::getUser()->getId();
 
             //print("Author: $author\n");
             $image_name = md5($author.time()) . image_type_to_extension(exif_imagetype($image_tmp));

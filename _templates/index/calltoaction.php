@@ -38,7 +38,7 @@ if (isset($_POST['post_text']) && isset($_FILES['post_image'])) {
     <form method="post" action="/" enctype="multipart/form-data">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">
-          What are you up to, <?= Session::getUser()->getUsername()?>
+          What are you up to, <?= Session::getUser()->getUsername() // php magic ?>
         </h1>
 
         <p class="lead text-muted">Share a photo that talks about it.</p>

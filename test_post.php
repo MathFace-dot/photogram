@@ -20,6 +20,7 @@
             $posts = Post::getAllPosts();
             foreach ($posts as $post) {
                 $p = new Post($post['id']);
+                print($p->getOwner());
             
            // $p->getImageUri();
                 

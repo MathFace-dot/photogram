@@ -52,6 +52,23 @@ class Session
         return Session::get('user_session');
     }
 
+    public static function isOwnerOf($owner)
+    {
+        $sess_user = Session::getUser();
+        if($sess_user) {
+            if($sess_user->getEmail() == $owner) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
+
+
     public static function loadTemplate($name){
         $script = $_SERVER['DOCUMENT_ROOT'] . get_config('base_path'). "_templates/$name.php";
       if (is_file($script)) {

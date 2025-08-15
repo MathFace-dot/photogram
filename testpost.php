@@ -7,7 +7,7 @@ print($p->uploadTime());
 //print_r($p->getAllPosts());
 print("...................................................");
 $author = Session::getUser();
-print($author);
+print_r($author);
 //print($p->getUploadedTime());
 http://www.photogram.project.com/test_carbon.php
 
