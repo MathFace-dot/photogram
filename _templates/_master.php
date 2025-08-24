@@ -18,6 +18,10 @@
 	<script
 		src="<?=get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js">
 	</script>
+	<script src="/js/app.min.js"></script>
+	<!-- <script src="/js/dialog.js"></script>
+	<script src="/js/toast.js"></script> -->
+
 
 
 </body>
