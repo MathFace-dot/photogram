@@ -1,0 +1,10 @@
+{
+	"db_server": "localhost",
+	"db_username": "root",
+	"db_password": "Password@1234",
+	"db_name": "sibidharan1_photogram",
+	"base_path": "/",
+	"upload_path": "/home/ubuntu/sibi/photogram_uploads"
+
+
+}
